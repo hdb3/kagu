@@ -1,3 +1,9 @@
-/usr/sbin/bird --version |& cat > /var/www/thttpd/version.txt
-/usr/bin/Sysinfo /> var/www/thttpd/sysinfo.txt
-/usr/sbin/bird -d
+# run.sh for bird
+if [ "$1" = "sysinfo" ]
+then
+  echo "VERSION=\"`/usr/sbin/bird --version |& cat`\""
+  /usr/bin/Sysinfo
+else
+  echo "starting bird"
+  #/usr/sbin/bird -d
+fi
