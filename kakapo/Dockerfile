@@ -8,6 +8,7 @@ RUN git clone https://github.com/hdb3/kakapo.git -b kagu && cd kakapo && bash -x
     ghc tools/Sysinfo
 FROM centos:centos7.6.1810
 COPY --from=0 /build/kakapo/kakapo.debug /build/kakapo/kakapo /build/kakapo/tools/Sysinfo /usr/sbin/
+COPY --from=0 /build/version.json /root
 RUN rpm --import /etc/pki/rpm-gpg/*
 RUN yum -y install dmidecode openssh-server iproute
 RUN ssh-keygen -A
