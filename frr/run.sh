@@ -1,7 +1,7 @@
 # run.sh for frr
 if [ "$1" = "sysinfo" ]
 then
-  echo "VERSION=\"`/usr/lib/frr/bgpd --version|head -1`\""
+  echo "VERSION='`/usr/lib/frr/bgpd --version|head -1`'"
   /usr/bin/Sysinfo
 else
   echo "starting frr"
