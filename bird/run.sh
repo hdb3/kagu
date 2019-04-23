@@ -5,5 +5,6 @@ then
   /usr/bin/Sysinfo
 else
   echo "starting bird"
-  #/usr/sbin/bird -d
+  sleep 10
+  /usr/sbin/bird -d
 fi

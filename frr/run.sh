@@ -5,5 +5,6 @@ then
   /usr/bin/Sysinfo
 else
   echo "starting frr"
+  sleep 10
   /usr/lib/frr/bgpd -p 0 -n --log stdout -f /etc/frr/bgpd.conf
 fi

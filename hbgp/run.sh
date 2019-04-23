@@ -5,5 +5,6 @@ then
   /usr/bin/Sysinfo
 else
   echo "starting hbgp"
+  sleep 10
   /usr/bin/Router
 fi
