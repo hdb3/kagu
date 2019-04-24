@@ -6,5 +6,6 @@ then
 else
   echo "starting bird"
   sleep 10
+  cat /etc/bird.conf
   /usr/sbin/bird -d
 fi
