@@ -1,7 +1,7 @@
 FROM hdb3/ghc
 WORKDIR /build
 ADD https://api.github.com/repos/hdb3/hBGP/git/refs/heads/master version.json
-RUN alias cabal=/usr/local/bin/cabal ; cabal update ; git clone https://github.com/hdb3/hBGP.git -b newbuild && cd hBGP && cabal build
+RUN alias cabal=/usr/local/bin/cabal ; cabal update ; git clone https://github.com/hdb3/hBGP.git -b newbuild && cd hBGP && cabal install --only-dependencies && cabal build
 FROM centos:centos7.6.1810
 RUN yum -y install dmidecode
 COPY Sysinfo /usr/bin/
