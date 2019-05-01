@@ -9,5 +9,6 @@ COPY --from=0 /root/hBGP/dist/build/hbgp/hbgp /usr/bin/
 #COPY --from=0 /root/.cabal/bin/* /usr/bin/
 COPY --from=0 /build/version.json /root
 COPY run.sh /root
+COPY bgp.conf /root
 #ENTRYPOINT ["/bin/bash", "-e"]
 ENTRYPOINT ["/bin/bash", "-e", "/root/run.sh"]
