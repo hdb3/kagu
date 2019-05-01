@@ -6,5 +6,5 @@ then
 else
   echo "starting hbgp"
   sleep 10
-  /usr/bin/Router
+  /usr/bin/hbgp
 fi
