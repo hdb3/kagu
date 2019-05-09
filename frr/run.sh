@@ -7,6 +7,5 @@ else
   echo "starting frr"
   ip addr add 169.254.0.13/32 dev lo || echo "probably the address is already assigned"
   until fping 169.254.0.11 169.254.0.12 ; do echo "retry" ; done
-  /usr/bin/ARPRouter &
   /usr/lib/frr/bgpd -p 0 -n --log stdout -f /etc/frr/bgpd.conf
 fi
