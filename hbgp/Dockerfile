@@ -1,7 +1,8 @@
 FROM hdb3/ghc
 WORKDIR /build
 # this is the fix to force rebuild when git repo is modified
-ADD https://api.github.com/repos/hdb3/hBGP/git/refs/heads/master version.json
+# note must match the git branch pulled on the following line
+ADD https://api.github.com/repos/hdb3/hBGP/git/refs/heads/newbuild version.json
 RUN alias cabal=/usr/local/bin/cabal ; cabal update ; git clone https://github.com/hdb3/hBGP.git -b newbuild && cd hBGP && cabal install --only-dependencies && cabal build
 FROM centos:centos7.6.1810
 RUN yum -y install dmidecode iproute

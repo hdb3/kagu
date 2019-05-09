@@ -12,13 +12,11 @@ COPY --from=0 /build/kakapo/relay/relay /build/kakapo/kakapo.debug /build/kakapo
 COPY --from=0 /build/version.json /root
 RUN rpm --import /etc/pki/rpm-gpg/*
 RUN yum -y install dmidecode openssh-server iproute
-RUN ssh-keygen -A
-RUN ssh-keygen -t rsa -f /root/.ssh/id_rsa -N ""
-RUN echo "root:root" | chpasswd
-COPY run.sh /root
-COPY authorized_keys /root/.ssh/
-#ENTRYPOINT ["/usr/bin/find"]
-#ENTRYPOINT ["/bin/top"]
-#ENTRYPOINT ["/bin/bash", "-il"]
+#RUN ssh-keygen -A
+#RUN ssh-keygen -t rsa -f /root/.ssh/id_rsa -N ""
+#RUN echo "root:root" | chpasswd
+#COPY run.sh /root
+#COPY authorized_keys /root/.ssh/
+ENTRYPOINT ["/bin/bash", "-il"]
 #ENTRYPOINT ["/usr/sbin/sshd", "-4", "-D", "-p", "65535"]
-ENTRYPOINT ["/bin/bash", "-xe", "/root/run.sh"]
+#ENTRYPOINT ["/bin/bash", "-xe", "/root/run.sh"]
