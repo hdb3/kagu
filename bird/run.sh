@@ -5,7 +5,7 @@ then
   /usr/bin/Sysinfo
 else
   echo "starting bird"
-  ip addr add 169.254.0.13/32 dev lo || echo "probably the address is already assigned"
-  until fping 169.254.0.11 169.254.0.12 ; do echo "retry" ; done
+  ip addr add 172.18.0.13/32 dev lo || echo "probably the address is already assigned"
+  until fping -S 172.18.0.13 172.18.0.11 172.18.0.12 ; do echo "retry" ; done
   /usr/sbin/bird -d
 fi
