@@ -9,4 +9,9 @@ RUN yum -y install epel-release
 RUN yum -y install dmidecode iproute iputils fping
 COPY --from=0 /build/kakapo/sysinfo/Sysinfo /usr/bin/
 COPY --from=0 /build/kakapo.json /root
+RUN type fping
 ENTRYPOINT ["/bin/bash", "-il"]
+#RUN yum -y install epel-release
+#RUN yum -y install fping
+#COPY --from=0 /root/cycle1.txt /root
+#COPY --from=0 /usr/sbin/fping /usr/sbin/fping

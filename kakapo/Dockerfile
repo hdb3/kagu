@@ -9,4 +9,8 @@ FROM hdb3/base
 RUN yum -y install iproute
 COPY --from=0 /build/kakapo/relay/relay /build/kakapo/kakapo.debug /build/kakapo/kakapo /usr/sbin/
 COPY --from=0 /build/version.json /root
-ENTRYPOINT ["/bin/bash", "-il"]
+COPY cdump /root/
+COPY run.sh /root/
+RUN mkdir /cores
+#ENTRYPOINT ["/bin/bash", "-il"]
+ENTRYPOINT ["/bin/bash", "-e", "/root/run.sh"]
