@@ -1,7 +1,3 @@
-
-
-
-
 # run.sh for kakapo
 if [ "$1" = "cdump" ]
 then
