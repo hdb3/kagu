@@ -1,1 +1,1 @@
-sudo docker build --no-cache -t hdb3/${1} ${1} && sudo docker push hdb3/${1}
+sudo docker build -t big:5000/${1} ${1} && sudo docker push big:5000/${1}
