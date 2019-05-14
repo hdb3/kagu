@@ -10,5 +10,4 @@ RUN yum -y install epel-release && \
     yum clean all
 COPY --from=0 /build/kakapo/sysinfo/Sysinfo /usr/bin/
 COPY --from=0 /build/kakapo.json /root
-RUN type fping
 ENTRYPOINT ["/bin/bash", "-il"]

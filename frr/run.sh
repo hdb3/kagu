@@ -6,7 +6,7 @@ then
 else
   echo "starting frr"
   ip addr add 172.18.0.13/32 dev lo || echo "probably the address is already assigned"
-  until fping -S 172.18.0.13 172.18.0.11 172.18.0.12 ; do echo "retry" ; done
-  /usr/lib/frr/bgpd -l 172.18.0.13 -n --log stdout -f /etc/frr/bgpd.conf
+  until fping -S 172.18.0.13 172.18.0.21 172.18.0.22 ; do echo "retry" ; done
+  /usr/lib/frr/bgpd -S -l 172.18.0.13 -n --log stdout -f /etc/frr/bgpd.conf
   # /usr/lib/frr/bgpd -p 0 -n --log stdout -f /etc/frr/bgpd.conf
 fi
