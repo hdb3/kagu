@@ -13,6 +13,7 @@ protocol kernel {
 
 template bgp {
 	local as 64504;
+	source address 172.18.0.13;
         multihop;
         import all;
         export all;
