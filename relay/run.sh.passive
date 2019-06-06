@@ -1,7 +1,7 @@
 # run.sh for kakapo relay
 if [ "$1" = "sysinfo" ]
 then
-  echo "VERSION='`/usr/bin/relay --version`'"
+  echo "VERSION='`/usr/sbin/relay --version`'"
   /usr/bin/Sysinfo
 else
   echo "starting kakapo-relay"
