@@ -1,5 +1,5 @@
 #!/bin/bash -xe
-REPO="big:5000"
+REPO="localrepo:5000"
 baseimages="ghc base"
 exportimages="kakapo relay hbgp bird frr"
 for i in $baseimages $exportimages ; do docker build -t $i $i ; done
