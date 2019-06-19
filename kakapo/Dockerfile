@@ -1,5 +1,5 @@
 #FROM centos:centos7.6.1810
-FROM ghc
+FROM stack
 WORKDIR /build
 # next line required to invalidate Docker cache when the git repo has changed
 ADD https://api.github.com/repos/hdb3/kakapo/git/refs/heads/kagu version.json
