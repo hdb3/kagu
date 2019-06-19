@@ -10,6 +10,6 @@ copyright:           Nicholas Hart
 executable simple
   build-type: Simple
   main-is:             Simple.hs
-  build-depends:       base , bytestring , iproute , attoparsec , attoparsec-binary , base16-bytestring , pretty-hex , io-streams , network , binary , containers , time , unix , sorted-list , hashable , unordered-containers , sorted-list , farmhash , extra , iproute , process , xml , aeson  , aeson-iproute , hinotify
+  build-depends:       base , bytestring , iproute , attoparsec , attoparsec-binary , base16-bytestring , pretty-hex , io-streams , network , binary , containers , time , unix , sorted-list , hashable , unordered-containers , sorted-list , farmhash , extra , iproute , process , xml , aeson  , aeson-iproute , hinotify, directory, filepath, uuid
   default-language:    Haskell2010
 

@@ -2,7 +2,7 @@
 if [ "$1" = "sysinfo" ]
 then
   echo "VERSION='`/usr/lib/frr/bgpd --version|head -1`'"
-  /usr/bin/Sysinfo
+  /usr/bin/sysinfo
 else
   echo "starting frr"
   ip addr add 172.18.0.13/32 dev lo || echo "probably the address is already assigned"
