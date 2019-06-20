@@ -1,6 +1,9 @@
-resolver: lts-12.26
-#resolver: lts-13.25
+#resolver: lts-12.26
+resolver: lts-13.25
 packages:
 - .
 ghc-options:
     "$everything": -O2
+
+extra-deps:
+- aeson-iproute-0.2@sha256:5f6bdaadc24ad0bc4ac04a2641a8cd8d8c7f91f44546d0db332f9e78d591641a,1345

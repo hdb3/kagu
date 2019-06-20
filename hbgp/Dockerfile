@@ -1,8 +1,9 @@
 FROM stack
 WORKDIR /build
-ARG BRANCH=master
+ARG BRANCH=DEBUG
+ARG RESOLVER=lts-11.14
 #ARG RESOLVER=lts-12.26
-ARG RESOLVER=lts-13.25
+#ARG RESOLVER=lts-13.25
 ADD https://api.github.com/repos/hdb3/hBGP/git/refs/heads/${BRANCH} hbgp.json
 RUN git clone https://github.com/hdb3/hBGP.git -b ${BRANCH} && cd hBGP && stack --resolver $RESOLVER build && stack --resolver $RESOLVER install
 FROM base
