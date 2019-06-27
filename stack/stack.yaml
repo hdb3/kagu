@@ -2,6 +2,7 @@
 resolver: lts-13.25
 packages:
 - .
+# ghc-options should match hbgp, otherwise this build cache is pointless
 ghc-options:
     "$everything": -O2
 
