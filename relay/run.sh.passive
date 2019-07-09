@@ -1,4 +1,5 @@
 # run.sh for kakapo relay
+echo "/coredumps/%e.%t" > /proc/sys/kernel/core_pattern
 if [ "$1" = "sysinfo" ]
 then
   echo "VERSION='`/usr/sbin/relay --version`'"
