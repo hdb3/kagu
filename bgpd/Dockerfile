@@ -1,4 +1,4 @@
-FROM centos:centos7.6.1810
+FROM centos:7.7.1908
 WORKDIR /build
 RUN yum -y update && yum -y groupinstall "Development Tools" && yum -y install ncurses-devel readline-devel && yum clean all
 RUN curl http://cdn.openbsd.org/pub/OpenBSD/OpenBGPD/openbgpd-6.5p0.tar.gz | tar xz && \
