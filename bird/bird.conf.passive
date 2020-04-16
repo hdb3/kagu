@@ -1,8 +1,8 @@
 log stderr all;
 log "/var/log/bird.log" all;
-router id 172.18.0.13;
+router id 7.0.0.1;
 
-listen bgp address 172.18.0.13;
+listen bgp address 7.0.0.1;
 
 protocol device {
 }
@@ -12,23 +12,33 @@ protocol kernel {
 }
 
 template bgp {
-	local as 64504;
-        source address 172.18.0.13;
+	local as 64500;
+        source address 7.0.0.1;
 	passive;
         multihop;
         import all;
         export all;
 }
 
-protocol bgp peer21 from bgp1 {
-	neighbor 172.18.0.21 as 64504;
+protocol bgp peera from bgp1 {
+        source address 7.0.0.1;
+	neighbor 7.0.0.2 as 64500;
         rr client;
         import all;
         export all;
 }
 
-protocol bgp peer22 from bgp1 {
-	neighbor 172.18.0.22 as 64504;
+protocol bgp peerb from bgp1 {
+        source address 7.0.0.5;
+	neighbor 7.0.0.6 as 64500;
+        rr client;
+        import all;
+        export all;
+}
+
+protocol bgp peerc from bgp1 {
+        source address 7.0.0.9;
+	neighbor 7.0.0.10 as 64500;
         rr client;
         import all;
         export all;
