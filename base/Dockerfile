@@ -13,8 +13,8 @@
 # ENTRYPOINT ["/bin/bash", "-il"]
 FROM centos:7.7.1908
 WORKDIR /build
-RUN rpm --import /etc/pki/rpm-gpg/*
-RUN yum -y install deltarpm && \
+RUN rpm --import /etc/pki/rpm-gpg/* && \
+    yum -y install deltarpm && \
     yum -y install epel-release && \
     yum -y update && \
     yum -y groupinstall "Development Tools" && \

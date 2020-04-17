@@ -1,13 +1,16 @@
 FROM centos:7.7.1908
 ARG VERSION=2.0.7
 WORKDIR /build
-RUN yum -y update && yum -y groupinstall "Development Tools" && yum -y install ncurses-devel readline-devel && yum clean all
-RUN curl ftp://bird.network.cz/pub/bird/bird-${VERSION}.tar.gz | tar xz && \
+RUN yum -y update && \
+    yum -y groupinstall "Development Tools" && \
+    yum -y install ncurses-devel readline-devel && \
+    yum clean all && \
+    curl ftp://bird.network.cz/pub/bird/bird-${VERSION}.tar.gz | tar xz && \
     cd bird-${VERSION} && \
     ./configure --prefix=/ && \
     make && \
     cp birdc bird ..
-FROM base
+FROM centos:7.7.1908
 COPY bird.conf /etc
 COPY run.sh /root
 COPY --from=0 /build/birdc /build/bird /usr/sbin/
