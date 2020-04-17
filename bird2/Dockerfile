@@ -12,7 +12,6 @@ RUN yum -y update && \
     cp birdc bird ..
 FROM centos:7.7.1908
 COPY bird.conf /etc
-COPY run.sh /root
 COPY --from=0 /build/birdc /build/bird /usr/sbin/
 ENTRYPOINT ["/usr/sbin/bird", "-d"]
-# ENTRYPOINT ["/bin/bash", "-e", "/root/run.sh"]
+

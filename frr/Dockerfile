@@ -3,5 +3,4 @@ RUN yum -y install https://ci1.netdef.org/artifact/LIBYANG-YANGRELEASE/shared/bu
     yum -y install https://github.com/FRRouting/frr/releases/download/frr-7.2/frr-7.2-01.el6.x86_64.rpm && \
     yum clean all
 COPY bgpd.conf /etc/frr/
-COPY run.sh /root
-ENTRYPOINT ["/bin/bash", "-e", "/root/run.sh"]
+ENTRYPOINT ["/usr/lib/frr/bgpd", "-S","-Z", "-n", "--log", "stdout", "-f", "/etc/frr/bgpd.conf"]
