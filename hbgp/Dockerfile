@@ -1,16 +1,16 @@
-FROM stack
+FROM ghcup
 WORKDIR /build
-#ARG BRANCH=IntPrefix
-#ARG BRANCH=DEBUG
-ARG BRANCH=master
-#ARG RESOLVER=lts-11.14
-#ARG RESOLVER=lts-12.26
-ARG RESOLVER=lts-13.25
+ARG BRANCH=murmur-hash
+# ARG BRANCH=master
 ADD https://api.github.com/repos/hdb3/hBGP/git/refs/heads/${BRANCH} hbgp.json
-RUN git clone https://github.com/hdb3/hBGP.git -b ${BRANCH} && cd hBGP && stack --resolver $RESOLVER build && stack --resolver $RESOLVER install
-FROM base
-COPY --from=0 /root/.local/bin/hbgp /usr/bin/
+RUN git clone https://github.com/hdb3/hBGP.git -b ${BRANCH} && \
+    cd hBGP && \
+    PATH="/root/.ghcup/bin/:$PATH" && \
+    cabal build && \
+    cabal install exe:hbgp exe:hbgp.event --installdir=/build/bin --install-method=copy --overwrite-policy=always
+FROM centos:7.7.1908
+COPY --from=0 /build/bin/hbgp /usr/bin
+COPY --from=0 /build/bin/hbgp.event /usr/bin
 COPY --from=0 /build/hbgp.json /root
-COPY run.sh /root
 COPY bgp.conf /root
-ENTRYPOINT ["/bin/bash", "-e", "/root/run.sh"]
+ENTRYPOINT ["/bin/bash", "-il"]
