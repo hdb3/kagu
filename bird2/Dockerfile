@@ -1,5 +1,5 @@
 FROM centos:7.7.1908
-ARG VERSION=2.0.7
+ARG VERSION=2.0.8
 WORKDIR /build
 RUN yum -y update && \
     yum -y groupinstall "Development Tools" && \
