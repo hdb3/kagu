@@ -1,6 +1,5 @@
-FROM base
-RUN yum -y install https://ci1.netdef.org/artifact/LIBYANG-YANGRELEASE/shared/build-8/CentOS-7-x86_64-Packages/libyang-0.16.111-0.x86_64.rpm && \
-    yum -y install https://github.com/FRRouting/frr/releases/download/frr-7.2/frr-7.2-01.el6.x86_64.rpm && \
-    yum clean all
+FROM localrepo:5000/base
+RUN yum -y install https://rpm.frrouting.org/repo/frr-stable-repo-1-0.el7.noarch.rpm && \
+    yum -y install frr frr-pythontools
 COPY bgpd.conf /etc/frr/
-ENTRYPOINT ["/usr/lib/frr/bgpd", "-S","-Z", "-n", "--log", "stdout", "-f", "/etc/frr/bgpd.conf"]
+ENTRYPOINT ["/usr/lib/frr/bgpd", "-l", "7.0.0.1","-S","-Z", "-n", "--log", "stdout", "-f", "/etc/frr/bgpd.conf"]
