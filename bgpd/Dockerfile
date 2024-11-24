@@ -1,12 +1,11 @@
 FROM base
 WORKDIR /build
-# RUN yum -y update && yum -y groupinstall "Development Tools" && yum -y install ncurses-devel readline-devel && yum clean all
-RUN export VER=6.6p0 ; curl http://cdn.openbsd.org/pub/OpenBSD/OpenBGPD/openbgpd-${VER}.tar.gz | tar xz && \
+RUN export VER=8.6 ; curl http://cdn.openbsd.org/pub/OpenBSD/OpenBGPD/openbgpd-${VER}.tar.gz | tar xz && \
     cd openbgpd-${VER} && \
-    ./configure --sysconfdir=/etc && \
+    ./configure --sysconfdir=/etc CFLAGS='-fcommon' && \
     make && \
     cp src/bgpd/bgpd src/bgpctl/bgpctl ..
-FROM centos:7.7.1908
+FROM fedora:41
 COPY bgpd.conf /etc
 COPY --from=0 /build/bgpd /build/bgpctl /usr/sbin/
 RUN  groupadd _bgpd && \

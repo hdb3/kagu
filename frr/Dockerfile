@@ -1,6 +1,9 @@
-FROM base
-RUN yum -y install https://ci1.netdef.org/artifact/LIBYANG-YANGRELEASE/shared/build-8/CentOS-7-x86_64-Packages/libyang-0.16.111-0.x86_64.rpm && \
-    yum -y install https://github.com/FRRouting/frr/releases/download/frr-7.2/frr-7.2-01.el6.x86_64.rpm && \
-    yum clean all
+FROM fedora:30
+# fedora 30 provides FRR 7.3, it is the earliest Fedora which has a package for frr
+# FROM fedora:35
+# # fedora 35 provides FRR 8.3
+RUN dnf -y update && \
+    dnf -y install frr && \
+    dnf clean all
 COPY bgpd.conf /etc/frr/
 ENTRYPOINT ["/usr/lib/frr/bgpd", "-S","-Z", "-n", "--log", "stdout", "-f", "/etc/frr/bgpd.conf"]

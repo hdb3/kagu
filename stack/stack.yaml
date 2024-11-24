@@ -1,10 +1,9 @@
-#resolver: lts-12.26
-resolver: lts-13.25
+# lts-20.11 is oldest LTS which was able to build with the given cabal file
+resolver: lts-20.11
 packages:
 - .
 # ghc-options should match hbgp, otherwise this build cache is pointless
 ghc-options:
     "$everything": -O2
-
 extra-deps:
-- aeson-iproute-0.2@sha256:5f6bdaadc24ad0bc4ac04a2641a8cd8d8c7f91f44546d0db332f9e78d591641a,1345
+- farmhash-0.1.0.5@sha256:908f8cb5fb2b232086254aac0fdfd0bf120fb102df716ebf4ad1352685f0d93b,1972
