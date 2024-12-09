@@ -1,6 +1,9 @@
-#!/bin/bash -xe
+#!/bin/bash -e
 TARGET_DIR=${1:?"please give a target directory for build output"}
 TARGET_DIR=$(realpath $TARGET_DIR)
+
+sudo apt install -y --no-install-recommends libevent-dev
+
 mkdir -p ${TARGET_DIR}
 BUILD_DIR=$(mktemp -d)
 pushd $BUILD_DIR

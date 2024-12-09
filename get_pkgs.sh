@@ -11,7 +11,7 @@ get_pkg() {
   
 
 get_pkgs() {
-  for pkg in frr gobgpd bird
+  for pkg in frr gobgpd
   do
     get_pkg $pkg
   done
@@ -21,7 +21,7 @@ get_pkgs() {
 main() {
   get_pkgs
   pushd files
-  tar cfv ../pkgs.tar *
+  tar cfvP ../pkgs.tar *
   popd
   mv pkgs.tar $1
 }
@@ -34,6 +34,12 @@ main $CALLER
 popd
 rm -rf $WORKDIR
 
-mkdir -p bin/frr bin/gobgp bin/bird
-tar xfv pkgs.tar --one-top-level=bin/frr usr/lib/frr/bgpd
-tar xfv pkgs.tar --one-top-level=bin/gobgp usr/bin/gobgpd
+mkdir -p bin/frr bin/gobgp
+tar xfv pkgs.tar --strip-components=3 --one-top-level=bin/frr usr/lib/frr/bgpd
+tar xfv pkgs.tar --strip-components=2 --one-top-level=bin/gobgp usr/bin/gobgpd
+
+echo "now:
+
+sudo tar  xvf ../kagu/pkgs.tar -C/ usr/lib/x86_64-linux-gnu/frr/
+
+"
